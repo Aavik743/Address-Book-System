@@ -5,13 +5,41 @@ import java.util.Scanner;
 
 public class AddressBook {
 	
-	ArrayList<Contacts> person = new ArrayList<>();
+	static ArrayList<Contacts> person = new ArrayList<>();
+	
+	static Scanner sc = new Scanner(System.in);
+	
+	public void console() {
+		
+		System.out.println("-----------------");
+		System.out.println("Choose,");
+		System.out.println("1. Create contact");
+		System.out.println("2. Exit");
+		System.out.print("Enter your choice: ");
+		
+		int option = sc.nextInt();
+		
+		while(true) {
+			
+			switch (option) {
+			
+				case 1:
+					createContacts();
+					break;
+				case 2:
+					System.out.println("Exited...");
+					System.exit(0);
+				default:
+					System.out.println("Enter a valid option");
+			}
+		}
+	}
 
 	public void createContacts() {
 		Contacts contacts = new Contacts();
 		
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter first Name:");
+		System.out.println("\nEnter first Name:");
 		String firstName = sc.nextLine();
 		contacts.setFirstName(firstName);
 		
@@ -46,4 +74,6 @@ public class AddressBook {
 		person.add(contacts);
 		System.out.println("person created sucessfully");
 	}
+
+
 }
