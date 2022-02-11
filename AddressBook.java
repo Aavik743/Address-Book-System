@@ -1,15 +1,14 @@
 package com.address;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Scanner;
 
 public class AddressBook {
 	
-	static ArrayList<Contacts> person = new ArrayList<>();
+	static Collection<Contacts> person = new ArrayList<>();
 	
 	static Scanner sc = new Scanner(System.in);
-	
-	static Contacts contacts = new Contacts();
 	
 	public void console() {
 		
@@ -19,7 +18,8 @@ public class AddressBook {
 			System.out.println("1. Create contact");
 			System.out.println("2. Edit contact");
 			System.out.println("3. Delete contact");
-			System.out.println("4. Exit");
+			System.out.println("4. View contacts");
+			System.out.println("5. Exit");
 			System.out.print("Enter your choice: ");
 			
 			int option = sc.nextInt();
@@ -36,6 +36,9 @@ public class AddressBook {
 					toDelete();
 					break;
 				case 4:
+					System.out.println(person);
+					break;
+				case 5:
 					System.out.println("Exited...");
 					System.exit(0);
 				default:
@@ -47,6 +50,7 @@ public class AddressBook {
 	
 
 	public void createContacts() {
+		 Contacts contacts = new Contacts();
 		
 		Scanner sc = new Scanner(System.in);
 	
@@ -95,35 +99,35 @@ public class AddressBook {
          boolean isPerson = false;
          
          for(int i=0;i<person.size();i++) {
-        	 if(person.get(i).getFirstName().equals(first)) {
+        	 if(((ArrayList<Contacts>) person).get(i).getFirstName().equals(first)) {
         		 
         		 isPerson = true;
         		 
-        		 person.get(i).setFirstName(first);
+        		 ((ArrayList<Contacts>) person).get(i).setFirstName(first);
         		 
         		 System.out.print("Enter Last Name:");
         		 String lastName = sc.next();
-        		 person.get(i).setLastName(lastName);
+        		 ((ArrayList<Contacts>) person).get(i).setLastName(lastName);
         		 
         	     System.out.print("Enter Address:");
          		 String address = sc.next();
-         		 person.get(i).setAddress(address);
+         		 ((ArrayList<Contacts>) person).get(i).setAddress(address);
          		 
          		 System.out.print("Enter state:");
          		 String state = sc.next();
-         		 person.get(i).setState(state);
+         		 ((ArrayList<Contacts>) person).get(i).setState(state);
          			
          		 System.out.print("Enter zip:");
          		 String zip = sc.next();
-         		 person.get(i).setZip(zip);
+         		 ((ArrayList<Contacts>) person).get(i).setZip(zip);
          			
          		 System.out.print("Enter phoneNumber:");
          		 String phoneNumber = sc.next();
-         		 person.get(i).setPhoneNumber(phoneNumber);
+         		 ((ArrayList<Contacts>) person).get(i).setPhoneNumber(phoneNumber);
        
          		 System.out.print("Enter email:");
          		 String email = sc.next();
-         		 person.get(i).setEmail(email);
+         		 ((ArrayList<Contacts>) person).get(i).setEmail(email);
          			
         		 System.out.println("Contact edited sucessfully");
         	 }
@@ -138,8 +142,8 @@ public class AddressBook {
          String firstName = sc.next();
          
          for(int i=0;i<person.size();i++) {
-        	 if(person.get(i).getFirstName().equals(firstName)) {
-        		 person.remove(person.get(i));
+        	 if(((ArrayList<Contacts>) person).get(i).getFirstName().equals(firstName)) {
+        		 person.remove(((ArrayList<Contacts>) person).get(i));
         		 System.out.println("Contact removed sucessfully");
         	 }
         	 else {
