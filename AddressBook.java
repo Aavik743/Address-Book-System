@@ -2,15 +2,17 @@ package com.address;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Dictionary;
+import java.util.Hashtable;
 import java.util.Scanner;
 
 public class AddressBook {
-	
 	static Collection<Contacts> person = new ArrayList<>();
-	
-	static Scanner sc = new Scanner(System.in);
+	Dictionary address = new Hashtable();
 	
 	public void console() {
+		
+		Scanner sc = new Scanner(System.in);
 		
 		while(true) {
 			System.out.println("-----------------");
@@ -19,7 +21,8 @@ public class AddressBook {
 			System.out.println("2. Edit contact");
 			System.out.println("3. Delete contact");
 			System.out.println("4. View contacts");
-			System.out.println("5. Exit");
+			System.out.println("5. Create another address book");
+			System.out.println("6. Exit");
 			System.out.print("Enter your choice: ");
 			
 			int option = sc.nextInt();
@@ -39,6 +42,9 @@ public class AddressBook {
 					System.out.println(person);
 					break;
 				case 5:
+					addAddressBook();
+					break;
+				case 6:
 					System.out.println("Exited...");
 					System.exit(0);
 				default:
@@ -92,6 +98,8 @@ public class AddressBook {
 	}
 
 	 public void editContact() {
+		 Scanner sc = new Scanner(System.in);
+		 
          System.out.print("Enter the first name you want to edit:");
          
          String first = sc.next();
@@ -138,6 +146,8 @@ public class AddressBook {
 	 }
 	 
 	 public void toDelete() {
+		 Scanner sc = new Scanner(System.in);
+		 
          System.out.println("Enter the first name of the contact to be deleted");
          String firstName = sc.next();
          
@@ -152,5 +162,16 @@ public class AddressBook {
         	 
          }
      }
+	 
+	 public void addAddressBook() {
+		Scanner sc = new Scanner(System.in);
+		 
+		AddressBook ab = new AddressBook();
+		System.out.println("Enter name of address Book you want");
+		String bookName = sc.nextLine();
+		address.put(bookName, ab);
+		System.out.println("Address Book " + bookName + " has been created. ");
+		
+	 }
 	 
 } 
